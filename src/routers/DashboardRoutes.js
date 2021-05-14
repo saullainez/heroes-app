@@ -1,11 +1,15 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router';
-import { DcScreen } from '../components/dc/DcScreen';
-import { HeroeScreen } from '../components/heroes/HeroeScreen';
-import { MarvelScreen } from '../components/marvel/MarvelScreen';
-import { Navbar } from '../ui/Navbar';
+import { Navbar } from '../components/ui/Navbar';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-export default function DashboardRoutes() {
+import { MarvelScreen } from '../components/marvel/MarvelScreen';
+import { HeroScreen } from '../components/heroes/HeroScreen';
+import { DcScreen } from '../components/dc/DcScreen';
+import { SearchScreen } from '../components/search/SearchScreen';
+
+export const DashboardRoutes = () => {
+
+
     return (
         <>
             <Navbar />
@@ -13,11 +17,15 @@ export default function DashboardRoutes() {
             <div className="container mt-2">
                 <Switch>
                     <Route exact path="/marvel" component={ MarvelScreen } />
-                    <Route exact path="/heroe/:heroeId" component={ HeroeScreen } />
+                    <Route exact path="/hero/:heroeId" component={ HeroScreen } />
                     <Route exact path="/dc" component={ DcScreen } />
+                    <Route exact path="/search" component={ SearchScreen } />
+
                     <Redirect to="/marvel" />
                 </Switch>
             </div>
+
+
         </>
     )
 }
